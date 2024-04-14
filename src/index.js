@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
 import "./index.css";
 import App from "./App";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,7 +10,9 @@ import { initialState } from "./context/initialState";
 import reducer from "./context/reducer";
 import { ToastContainer } from "react-toastify";
 
-ReactDOM.render(
+import { createRoot } from "react-dom/client";
+
+createRoot(document.getElementById("root")).render(
   <Router>
     <StateProvider initialState={initialState} reducer={reducer}>
       <App />
@@ -27,6 +29,5 @@ ReactDOM.render(
         theme="light"
       />
     </StateProvider>
-  </Router>,
-  document.getElementById("root")
+  </Router>
 );

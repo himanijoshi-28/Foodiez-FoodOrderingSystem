@@ -7,7 +7,6 @@ export const actionType = {
   SET_ORDER: " SET_ORDER",
 };
 const reducer = (state, action) => {
-  console.log(action);
   switch (action.type) {
     case actionType.SET_USER:
       return {

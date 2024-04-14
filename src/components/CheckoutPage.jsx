@@ -3,10 +3,8 @@ import { fetchCart, fetchUser } from "../utils/fetchLocalStorageData";
 
 import PaymentButton from "./PaymentButton";
 import Map from "./Map";
-import { useStateValue } from "../context/StateProvider";
 
 const CheckoutPage = () => {
-  console.log("checkout page renders");
   const [tot, setTot] = useState(0);
 
   // const { cartItems } = useStateValue();
@@ -38,7 +36,7 @@ const CheckoutPage = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center border-b bg-white py-2 sm:flex-row sm:px-10 lg:px-20 xl:px-32  ">
+      <div className="flex flex-col items-center  border-b bg-white py-2 sm:flex-row sm:px-10 lg:px-20 xl:px-32  ">
         <a href="/" className="text-2xl font-bold text-gray-800">
           Foodiez
         </a>
@@ -117,12 +115,8 @@ const CheckoutPage = () => {
           </div>
         </div>
       </div>
-      <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+      <div className="grid sm:px-10 grid-cols-1 lg:grid-cols-2  lg:px-20 xl:px-32 sm:w-full">
         <div className="px-4 pt-8">
-          {/* <div className="text-xl font-medium">Order Summary</div>
-          <div className="text-gray-400">
-            Check your items. And select a suitable shipping method.
-          </div> */}
           <div className="mt-1 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
             {CartCheckoutItems.map((item) => (
               <div
@@ -169,41 +163,8 @@ const CheckoutPage = () => {
         <div className="mt-10  px-4 pt-8 lg:mt-0">
           {/* <MapContainer /> */}
 
-          <div>
+          <div className=" md:flex md:items-center md:justify-center">
             <p title="Choose Your Location" fontSize="1.6rem" />
-            {/* <Map
-              location={order.addressLatLng}
-              onChange={(latlng) => {
-                console.log(latlng);
-                setOrder({
-                  ...order,
-                  addressLatLng: latlng,
-                  name: user.displayName,
-                  email: user.email,
-                  contact: user.phoneNumber || "9000090000",
-                  id: `${Date.now()}`,
-                  orderStatus: "pending",
-                });
-                saveOrderData(order);
-                console.log("data saved may to firebase heres copy", order);
-              }}  /> */}
-
-            {/* <Map
-              location={order.addressLatLng}
-              onChange={(latlng) => {
-                console.log(latlng);
-                //Update order state and call saveOrderData in the callback function
-                setOrder({
-                  ...order,
-                  addressLatLng: latlng,
-                  name: user.displayName,
-                  email: user.email,
-                  contact: user.phoneNumber || "9000090000",
-                  id: `${Date.now()}`,
-                  orderStatus: "pending",
-                });
-              }}
-            /> */}
 
             <Map
               location={order.addressLatLng}
@@ -224,8 +185,6 @@ const CheckoutPage = () => {
                 }
               }}
             />
-
-            {console.log("orderd", order)}
           </div>
         </div>
       </div>

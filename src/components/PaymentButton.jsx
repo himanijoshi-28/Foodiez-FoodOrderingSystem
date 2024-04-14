@@ -10,8 +10,6 @@ const PaymentButton = ({ amount, order }) => {
   const [{ user }] = useStateValue();
 
   const savetoDB = (response) => {
-    console.log("Payment response:", response);
-
     // Save payment data to Firestore
     savePaymentData({
       ...response,
@@ -23,6 +21,7 @@ const PaymentButton = ({ amount, order }) => {
     // Navigate to home page after a delay
     setTimeout(() => {
       localStorage.removeItem("cartItems");
+      window.location.href = "/";
     }, 1000);
   };
   const handleClick = () => {
@@ -31,14 +30,13 @@ const PaymentButton = ({ amount, order }) => {
       toast.error(
         "Please provide a shipping address before proceeding with payment."
       );
-      console.log("order", order);
 
       return;
     } else {
       saveOrderData(order);
     }
     var options = {
-      key: process.env.RAYZORPAY_KEY, // Enter the Key ID generated from the Dashboard
+      key: process.env.REACT_APP_RAYZORPAY_KEY, // Enter the Key ID generated from the Dashboard
       amount: amount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
       name: "Foodiez", //your business name
@@ -47,7 +45,6 @@ const PaymentButton = ({ amount, order }) => {
 
       handler: function (response) {
         savetoDB(response);
-        console.log("staright from bank", response);
       },
       prefill: {
         //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number

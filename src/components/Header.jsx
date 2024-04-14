@@ -55,7 +55,7 @@ const Header = () => {
   };
   return (
     <>
-      <header className=" fixed z-50 w-screen  p-3 px-4 md:px-16 bg-primary">
+      <header className=" fixed z-[100] w-screen  p-3 px-4 md:px-16 bg-primary">
         {/* desktop and tab  */}
         <div className="hidden md:flex w-full h-full items-center justify-between">
           <Link to={"/"} className="flex items-center gap-2">
@@ -124,7 +124,7 @@ const Header = () => {
                   exit={{ opacity: 0, scale: 0.6 }}
                   className="w-40 bg-primary shadow-xl rounded-lg flex flex-col absolute top-12 right-0 "
                 >
-                  {user && user.email === process.env.ADMIN_EMAIL && (
+                  {user && user.email === process.env.REACT_APP_ADMIN_EMAIL && (
                     <>
                       <Link to={"/createItem"}>
                         <p

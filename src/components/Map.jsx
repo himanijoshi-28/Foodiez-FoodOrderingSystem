@@ -21,7 +21,7 @@ export default function Map({ readonly, location, onChange }) {
   }, [location]);
 
   return (
-    <div className={classes.container}>
+    <div className="md:w-[35rem] h-[22rem] md:relative text-center ">
       <MapContainer
         className={classes.map}
         center={mapCenter}
